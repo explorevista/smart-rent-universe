@@ -1,1 +1,42 @@
+body{
+margin:0;
+font-family:Poppins;
+background:#0f172a;
+color:white;
+}
 
+.navbar{
+display:flex;
+justify-content:space-between;
+padding:15px;
+background:#020617;
+}
+
+.hero{
+text-align:center;
+padding:100px 20px;
+background:linear-gradient(45deg,#1e293b,#020617);
+}
+
+button{
+padding:10px 15px;
+margin:5px;
+border:none;
+border-radius:8px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+padding:20px;
+}
+
+.grid div{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+}
