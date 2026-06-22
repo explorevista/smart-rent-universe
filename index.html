@@ -1,64 +1,2100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Rent Universe</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Rent Universe — Find Rental Homes & Shops in Pakistan</title>
+  <meta name="description" content="Smart Rent Universe connects tenants with property owners in Pakistan. Browse verified rental homes and shops with direct WhatsApp contact. No middlemen." />
+  <meta name="keywords" content="rental homes Pakistan, shops for rent, property rental, Karachi rentals, Lahore rentals, Smart Rent Universe" />
+  <link rel="canonical" href="https://smartrentuniverse.pk/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Smart Rent Universe — Rent Smarter in Pakistan" />
+  <meta property="og:description" content="Find rental homes and shops across Pakistan. Connect directly with property owners via WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://smartrentuniverse.pk/" />
+  <meta property="og:image" content="https://smartrentuniverse.pk/og-image.jpg" />
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Smart Rent Universe",
+    "url": "https://smartrentuniverse.pk",
+    "telephone": "+923441695860",
+    "email": "muhammadalikn53@gmail.com",
+    "description": "Pakistan's rental property marketplace connecting tenants with owners.",
+    "areaServed": "PK"
+  }
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #6C3FF5;
+      --primary-dark: #5128D4;
+      --primary-light: #8B64F7;
+      --accent: #00D4AA;
+      --accent-dark: #00A882;
+      --surface: #FFFFFF;
+      --surface-2: #F7F5FF;
+      --surface-3: #EEE9FF;
+      --text-primary: #0D0D1A;
+      --text-secondary: #4A4A6A;
+      --text-muted: #8888AA;
+      --border: #E0DAF5;
+      --shadow-sm: 0 2px 8px rgba(108,63,245,0.08);
+      --shadow-md: 0 8px 32px rgba(108,63,245,0.14);
+      --shadow-lg: 0 20px 60px rgba(108,63,245,0.18);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --nav-h: 68px;
+      --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+    }
+    [data-theme="dark"] {
+      --primary: #8B64F7;
+      --primary-dark: #6C3FF5;
+      --primary-light: #A98BFF;
+      --accent: #00D4AA;
+      --surface: #0F0F1E;
+      --surface-2: #161628;
+      --surface-3: #1E1E38;
+      --text-primary: #F0EEFF;
+      --text-secondary: #B0A8D8;
+      --text-muted: #6868A0;
+      --border: #2A2A4A;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+    }
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+    input, textarea, select { font-family: inherit; outline: none; }
+    ul { list-style: none; }
 
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .hidden { display: none !important; }
+    .page { display: none; min-height: 100vh; }
+    .page.active { display: block; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--radius-md);
+      font-size: 0.95rem; font-weight: 600;
+      transition: all var(--transition); cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--primary); color: #fff;
+      box-shadow: 0 4px 20px rgba(108,63,245,0.35);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(108,63,245,0.45); }
+    .btn-secondary { background: var(--surface); color: var(--primary); border: 2px solid var(--primary); }
+    .btn-secondary:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .btn-accent { background: var(--accent); color: #fff; box-shadow: 0 4px 20px rgba(0,212,170,0.35); }
+    .btn-accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--text-primary); }
+    .btn-ghost:hover { background: var(--surface-2); }
+    .btn-sm { padding: 8px 16px; font-size: 0.85rem; }
+    .btn-lg { padding: 16px 36px; font-size: 1.05rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+    }
+    .badge-pro { background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a0a00; }
+    .badge-featured { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; }
+    .badge-free { background: var(--surface-3); color: var(--text-secondary); }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .section-sub { font-size: 1.05rem; color: var(--text-secondary); max-width: 580px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .glass {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    [data-theme="dark"] .glass { background: rgba(15,15,30,0.7); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+    .form-control {
+      width: 100%; padding: 12px 16px;
+      background: var(--surface-2); border: 1.5px solid var(--border);
+      border-radius: var(--radius-md); font-size: 0.95rem; color: var(--text-primary);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(108,63,245,0.12); }
+    .form-control::placeholder { color: var(--text-muted); }
+    select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236C3FF5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+    .error-msg { color: #e53e3e; font-size: 0.82rem; margin-top: 4px; }
+    .success-msg { color: #38a169; font-size: 0.82rem; margin-top: 4px; }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      padding: 14px 22px; border-radius: var(--radius-md);
+      font-size: 0.9rem; font-weight: 500; box-shadow: var(--shadow-lg);
+      animation: slideInRight 0.3s ease; max-width: 340px;
+    }
+    .toast-success { background: #38a169; color: #fff; }
+    .toast-error { background: #e53e3e; color: #fff; }
+    .toast-info { background: var(--primary); color: #fff; }
+    @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .spinner {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 3px solid var(--border); border-top-color: var(--primary);
+      animation: spin 0.8s linear infinite; margin: 40px auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .text-center { text-align: center; }
+    .text-primary { color: var(--primary); }
+    .text-accent { color: var(--accent); }
+    .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+    .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h); background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    [data-theme="dark"] #navbar { background: rgba(15,15,30,0.9); }
+    #navbar .container { height: 100%; display: flex; align-items: center; gap: 16px; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.15rem; font-weight: 800; color: var(--primary);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .nav-logo .logo-icon {
+      width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1rem;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px;
+      flex: 1; justify-content: center;
+    }
+    .nav-links a {
+      padding: 8px 14px; border-radius: var(--radius-sm);
+      font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); background: var(--surface-2); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .dark-toggle {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--surface-2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); font-size: 1rem;
+      transition: all var(--transition);
+    }
+    .dark-toggle:hover { background: var(--surface-3); color: var(--primary); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      width: 38px; height: 38px; align-items: center; justify-content: center;
+      background: var(--surface-2); border-radius: var(--radius-sm);
+    }
+    .hamburger span { width: 20px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all var(--transition); }
+    .mobile-menu {
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 16px 20px; z-index: 999; flex-direction: column; gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 12px 16px; border-radius: var(--radius-sm);
+      font-weight: 500; color: var(--text-secondary); transition: all var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--primary); background: var(--surface-2); }
+    .mobile-menu .divider { margin: 8px 0; }
+    .mobile-menu .btn { width: 100%; justify-content: center; margin-top: 4px; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(135deg, #1a0533 0%, #0D0D1A 40%, #0a2040 100%);
+      position: relative; overflow: hidden; padding-top: var(--nav-h);
+    }
+    .hero-bg-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.3;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--primary); top: -100px; left: -150px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--accent); bottom: -80px; right: -100px; animation-delay: -3s; }
+    .orb-3 { width: 300px; height: 300px; background: #FF6B6B; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: -6s; opacity: 0.15; }
+    @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+    .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+    .hero-text { color: #fff; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(108,63,245,0.3); border: 1px solid rgba(108,63,245,0.5);
+      border-radius: 20px; padding: 6px 16px; font-size: 0.82rem; font-weight: 600;
+      color: #c4a9ff; margin-bottom: 24px;
+    }
+    .hero-eyebrow i { color: var(--accent); }
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-title span { background: linear-gradient(135deg, var(--accent), #7BFFEE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 36px; line-height: 1.7; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats { display: flex; gap: 36px; }
+    .hero-stat { text-align: left; }
+    .hero-stat .num { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+    .hero-stat .label { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+    .hero-card-stack { position: relative; height: 420px; }
+    .hero-card {
+      position: absolute; width: 100%; max-width: 340px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-xl); padding: 20px; color: #fff;
+      backdrop-filter: blur(20px);
+    }
+    .hero-card:nth-child(1) { top: 0; right: 0; }
+    .hero-card:nth-child(2) { top: 140px; right: 30px; opacity: 0.6; transform: scale(0.94); z-index: -1; }
+    .hero-card:nth-child(3) { top: 270px; right: 60px; opacity: 0.3; transform: scale(0.88); z-index: -2; }
+    .hero-card-img { width: 100%; height: 160px; background: linear-gradient(135deg, #6C3FF5, #00D4AA); border-radius: var(--radius-md); margin-bottom: 14px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .hero-card-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .hero-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .hero-card-loc { font-size: 0.82rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+    .hero-card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .hero-card-price { font-size: 1.2rem; font-weight: 800; color: var(--accent); }
+    .hero-card-badge { background: rgba(0,212,170,0.2); color: var(--accent); border: 1px solid rgba(0,212,170,0.4); border-radius: 20px; padding: 3px 10px; font-size: 0.75rem; font-weight: 600; }
+
+    /* ===== SECTIONS LAYOUT ===== */
+    section { padding: 80px 0; }
+    .section-header { margin-bottom: 48px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ===== CATEGORIES ===== */
+    #categories { background: var(--surface-2); }
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .category-card {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px 24px;
+      text-align: center; cursor: pointer; transition: all var(--transition);
+    }
+    .category-card:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .category-card.active { border-color: var(--primary); background: var(--surface-3); }
+    .category-icon {
+      width: 64px; height: 64px; border-radius: var(--radius-md);
+      margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .cat-homes .category-icon { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+    .cat-shops .category-icon { background: linear-gradient(135deg, #f7971e, #ffd200); color: #fff; }
+    .cat-offices .category-icon { background: linear-gradient(135deg, #11998e, #38ef7d); color: #fff; }
+    .cat-warehouses .category-icon { background: linear-gradient(135deg, #ee0979, #ff6a00); color: #fff; }
+    .category-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .category-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* ===== LISTINGS GRID ===== */
+    .listings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .listing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all var(--transition); cursor: pointer;
+    }
+    .listing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .listing-img {
+      height: 200px; background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; position: relative;
+    }
+    .listing-img .featured-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #1a0a00; font-size: 0.72rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px;
+    }
+    .listing-img .type-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+    .listing-body { padding: 18px; }
+    .listing-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+    .listing-loc { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+    .listing-price { font-size: 1.3rem; font-weight: 800; color: var(--primary); margin-bottom: 14px; }
+    .listing-price span { font-size: 0.8rem; font-weight: 400; color: var(--text-muted); }
+    .listing-actions { display: flex; gap: 8px; }
+    .listing-actions .btn { flex: 1; justify-content: center; font-size: 0.85rem; padding: 9px 12px; }
+    .whatsapp-btn { background: #25D366 !important; color: #fff !important; box-shadow: 0 4px 14px rgba(37,211,102,0.35) !important; }
+    .whatsapp-btn:hover { background: #1EBE58 !important; }
+
+    /* ===== SEARCH & FILTER BAR ===== */
+    .search-bar {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 20px 24px;
+      display: grid; grid-template-columns: 1fr auto auto auto auto;
+      gap: 12px; align-items: end; margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .search-input-wrap { position: relative; }
+    .search-input-wrap i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+    .search-input-wrap input { padding-left: 38px; }
+    .filter-select { min-width: 130px; }
+
+    /* ===== WHY SECTION ===== */
+    #why-us { background: var(--surface); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .why-card {
+      padding: 32px 28px; border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border); transition: all var(--transition);
+    }
+    .why-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 18px;
+    }
+    .why-card:nth-child(1) .why-icon { background: linear-gradient(135deg, #6C3FF5, #8B64F7); color: #fff; }
+    .why-card:nth-child(2) .why-icon { background: linear-gradient(135deg, #00D4AA, #00A882); color: #fff; }
+    .why-card:nth-child(3) .why-icon { background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: #fff; }
+    .why-card:nth-child(4) .why-icon { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+    .why-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .why-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { background: var(--surface-2); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testimonial-card { padding: 28px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); }
+    .testimonial-stars { color: #FFD700; margin-bottom: 12px; font-size: 0.9rem; }
+    .testimonial-text { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1rem; }
+    .testimonial-name { font-weight: 700; font-size: 0.9rem; }
+    .testimonial-city { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--surface); }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius-md); overflow: hidden; transition: border-color var(--transition); }
+    .faq-item.open { border-color: var(--primary); }
+    .faq-q {
+      padding: 18px 22px; font-weight: 600; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; transition: background var(--transition);
+    }
+    .faq-q:hover { background: var(--surface-2); }
+    .faq-q i { color: var(--primary); transition: transform var(--transition); flex-shrink: 0; margin-left: 12px; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); }
+    .faq-a { padding: 0 22px; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
+    .faq-item.open .faq-a { padding: 0 22px 18px; max-height: 200px; }
+    .faq-a p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ===== PRICING / PRO ===== */
+    #pricing { background: var(--surface-2); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 720px; margin: 0 auto; }
+    .pricing-card {
+      background: var(--surface); border: 2px solid var(--border);
+      border-radius: var(--radius-xl); padding: 36px 32px;
+      text-align: center; position: relative; transition: all var(--transition);
+    }
+    .pricing-card.popular {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(108,63,245,0.12), var(--shadow-lg);
+      transform: scale(1.02);
+    }
+    .pricing-popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; padding: 5px 18px; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 700; white-space: nowrap;
+    }
+    .pricing-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .pricing-price { font-size: 2.6rem; font-weight: 800; color: var(--primary); margin: 16px 0 4px; }
+    .pricing-price sup { font-size: 1.2rem; vertical-align: top; margin-top: 8px; }
+    .pricing-period { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+    .pricing-features { text-align: left; margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+    .pricing-feature { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); }
+    .pricing-feature i { color: var(--accent); font-size: 0.85rem; }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface); border-radius: var(--radius-xl);
+      width: 100%; max-width: 480px; padding: 36px;
+      box-shadow: var(--shadow-lg); position: relative;
+      animation: fadeInScale 0.25s ease;
+      max-height: 90vh; overflow-y: auto;
+    }
+    @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--surface-2); color: var(--text-secondary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: all var(--transition);
+    }
+    .modal-close:hover { background: var(--surface-3); color: var(--text-primary); }
+    .modal-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+    .modal-sub { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 24px; }
+    .social-login { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .btn-google {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 24px; border-radius: var(--radius-md);
+      background: var(--surface-2); border: 1.5px solid var(--border);
+      font-weight: 600; font-size: 0.9rem; color: var(--text-primary);
+      transition: all var(--transition);
+    }
+    .btn-google:hover { border-color: var(--primary); background: var(--surface-3); }
+    .btn-google img { width: 18px; height: 18px; }
+    .auth-switch { text-align: center; font-size: 0.88rem; color: var(--text-secondary); }
+    .auth-switch a { color: var(--primary); font-weight: 600; }
+
+    /* ===== DASHBOARD ===== */
+    .dashboard-layout { display: grid; grid-template-columns: 260px 1fr; gap: 28px; padding-top: calc(var(--nav-h) + 32px); }
+    .sidebar {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 24px; height: fit-content;
+      position: sticky; top: calc(var(--nav-h) + 16px);
+    }
+    .sidebar-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.6rem; font-weight: 700;
+      margin: 0 auto 12px;
+    }
+    .sidebar-name { text-align: center; font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .sidebar-email { text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; }
+    .sidebar-nav { display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: var(--radius-sm);
+      font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--primary); background: var(--surface-2); }
+    .sidebar-nav a i { width: 18px; text-align: center; }
+    .dashboard-content { min-height: 60vh; }
+    .dash-panel { display: none; }
+    .dash-panel.active { display: block; }
+    .dash-header { margin-bottom: 24px; }
+    .dash-header h2 { font-size: 1.5rem; font-weight: 800; }
+    .dash-header p { font-size: 0.88rem; color: var(--text-secondary); }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; }
+    .stat-card .stat-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .stat-card .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+    .my-listings-table { width: 100%; }
+    .listing-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px; border-radius: var(--radius-md);
+      border: 1px solid var(--border); margin-bottom: 10px;
+      transition: all var(--transition);
+    }
+    .listing-row:hover { border-color: var(--primary); background: var(--surface-2); }
+    .listing-row-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      background: var(--surface-3); display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .listing-row-info { flex: 1; min-width: 0; }
+    .listing-row-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .listing-row-meta { font-size: 0.78rem; color: var(--text-muted); }
+    .listing-row-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-edit { background: var(--surface-3); color: var(--primary); border: 1px solid var(--border); padding: 6px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; transition: all var(--transition); }
+    .btn-edit:hover { background: var(--surface-2); }
+    .btn-delete { background: #FFF5F5; color: #e53e3e; border: 1px solid #FED7D7; padding: 6px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; transition: all var(--transition); }
+    .btn-delete:hover { background: #FED7D7; }
+    [data-theme="dark"] .btn-delete { background: rgba(229,62,62,0.15); border-color: rgba(229,62,62,0.3); }
+
+    /* ===== POST LISTING PAGE ===== */
+    .post-listing-wrap { max-width: 680px; margin: 0 auto; padding: calc(var(--nav-h) + 48px) 20px 60px; }
+    .post-listing-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 40px; }
+
+    /* ===== LISTING DETAIL ===== */
+    .listing-detail-wrap { padding: calc(var(--nav-h) + 32px) 20px 60px; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 380px; gap: 32px; }
+    .detail-img { height: 320px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: 6rem; margin-bottom: 28px; }
+    .detail-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+    .detail-loc { color: var(--text-muted); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+    .detail-price { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+    .detail-price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+    .detail-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+    .detail-sidebar { position: sticky; top: calc(var(--nav-h) + 16px); height: fit-content; }
+    .contact-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+
+    /* ===== ABOUT & CONTACT ===== */
+    .content-page { padding: calc(var(--nav-h) + 60px) 20px 80px; }
+    .content-page .container { max-width: 800px; }
+    .about-hero { text-align: center; margin-bottom: 60px; }
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 48px; }
+    .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-align: center; }
+    .about-card i { font-size: 2rem; color: var(--primary); margin-bottom: 14px; }
+    .about-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .about-card p { font-size: 0.84rem; color: var(--text-secondary); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-item-icon { width: 42px; height: 42px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-item-icon.wa { background: rgba(37,211,102,0.12); color: #25D366; }
+    .contact-item-icon.em { background: rgba(108,63,245,0.12); color: var(--primary); }
+    .contact-item-icon.ph { background: rgba(0,212,170,0.12); color: var(--accent); }
+    .contact-item-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .contact-item-value { font-weight: 600; font-size: 0.95rem; }
+    .wa-btn-lg {
+      display: flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff; border-radius: var(--radius-md);
+      padding: 14px 24px; font-weight: 700; font-size: 1rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: all var(--transition); margin-top: 20px;
+    }
+    .wa-btn-lg:hover { background: #1EBE58; transform: translateY(-2px); }
+
+    /* ===== PAYMENT PAGE ===== */
+    .payment-wrap { padding: calc(var(--nav-h) + 48px) 20px 80px; }
+    .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    .payment-method-card {
+      background: var(--surface); border: 2px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px; text-align: center;
+      cursor: pointer; transition: all var(--transition);
+    }
+    .payment-method-card:hover, .payment-method-card.selected { border-color: var(--primary); background: var(--surface-3); }
+    .payment-method-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .payment-method-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .payment-method-number { font-size: 0.88rem; color: var(--text-muted); font-family: monospace; }
+    .payment-steps { background: var(--surface-2); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 24px; }
+    .payment-step { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; }
+    .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* ===== FOOTER ===== */
+    #footer {
+      background: #0D0D1A; color: rgba(255,255,255,0.7);
+      padding: 60px 0 24px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .nav-logo { color: #fff; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
+    .social-icon {
+      width: 38px; height: 38px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
+      font-size: 0.95rem; transition: all var(--transition);
+    }
+    .social-icon:hover { background: var(--primary); color: #fff; transform: translateY(-3px); }
+    .footer-col h4 { font-weight: 700; font-size: 0.9rem; color: #fff; margin-bottom: 16px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { font-size: 0.87rem; transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-contact-item { display: flex; align-items: center; gap: 8px; font-size: 0.87rem; margin-bottom: 8px; }
+    .footer-contact-item i { color: var(--primary); width: 16px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; }
+    .footer-bottom p { font-size: 0.82rem; }
+
+    /* ===== AI ASSISTANT ===== */
+    .ai-bubble {
+      position: fixed; bottom: 28px; left: 28px; z-index: 1100;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.4rem; box-shadow: var(--shadow-lg);
+      cursor: pointer; transition: all var(--transition);
+    }
+    .ai-bubble:hover { transform: scale(1.1); }
+    .ai-chat {
+      position: fixed; bottom: 100px; left: 28px; z-index: 1100;
+      width: 340px; max-height: 480px; background: var(--surface);
+      border: 1.5px solid var(--border); border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg); display: flex; flex-direction: column;
+      animation: fadeInUp 0.3s ease;
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .ai-chat-header {
+      padding: 16px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0; color: #fff;
+    }
+    .ai-chat-header .ai-avatar { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .ai-chat-header-info h4 { font-size: 0.9rem; font-weight: 700; }
+    .ai-chat-header-info p { font-size: 0.75rem; opacity: 0.8; }
+    .ai-close-btn { margin-left: auto; background: rgba(255,255,255,0.2); border: none; width: 28px; height: 28px; border-radius: 50%; color: #fff; font-size: 0.85rem; cursor: pointer; transition: all var(--transition); display: flex; align-items: center; justify-content: center; }
+    .ai-close-btn:hover { background: rgba(255,255,255,0.3); }
+    .ai-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .ai-msg { display: flex; gap: 8px; }
+    .ai-msg.user { flex-direction: row-reverse; }
+    .ai-msg-bubble { max-width: 240px; padding: 10px 14px; border-radius: 16px; font-size: 0.85rem; line-height: 1.5; }
+    .ai-msg.bot .ai-msg-bubble { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-primary); border-bottom-left-radius: 4px; }
+    .ai-msg.user .ai-msg-bubble { background: var(--primary); color: #fff; border-bottom-right-radius: 4px; }
+    .ai-chat-input { padding: 14px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+    .ai-chat-input input { flex: 1; padding: 9px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--surface-2); font-size: 0.85rem; color: var(--text-primary); }
+    .ai-chat-input input:focus { border-color: var(--primary); }
+    .ai-send-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition); }
+    .ai-send-btn:hover { background: var(--primary-dark); }
+    .ai-voice-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--surface-3); color: var(--text-secondary); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition); }
+    .ai-voice-btn:hover { background: var(--accent); color: #fff; }
+    .ai-voice-btn.listening { background: #e53e3e; color: #fff; animation: pulse 1s ease infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+    .ai-suggestions { padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .ai-suggest-chip { padding: 5px 12px; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-secondary); cursor: pointer; transition: all var(--transition); }
+    .ai-suggest-chip:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ===== LISTINGS PAGE HEADER ===== */
+    .listings-page-header { padding: calc(var(--nav-h) + 48px) 0 32px; background: var(--surface-2); }
+
+    /* ===== EMPTY STATE ===== */
+    .empty-state { text-align: center; padding: 60px 20px; }
+    .empty-state i { font-size: 3rem; color: var(--text-muted); margin-bottom: 16px; }
+    .empty-state h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .empty-state p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 20px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card-stack { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .dashboard-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .detail-sidebar { position: static; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-actions .btn { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 56px 0; }
+      .search-bar { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .payment-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .post-listing-card { padding: 24px; }
+      .ai-chat { left: 12px; right: 12px; width: auto; }
+    }
+    @media (max-width: 480px) {
+      .hero-cta { flex-direction: column; }
+      .hero-stats { gap: 20px; }
+      .pricing-card.popular { transform: none; }
+      .modal { padding: 24px; }
+    }
+  </style>
 </head>
+<body data-theme="light">
 
-<body>
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo" onclick="showPage('home')">
+      <div class="logo-icon"><i class="fa-solid fa-building"></i></div>
+      Smart Rent Universe
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active" onclick="showPage('home'); return false;" id="nav-home">Home</a></li>
+      <li><a href="#" onclick="showPage('listings'); return false;" id="nav-listings">Listings</a></li>
+      <li><a href="#" onclick="requireAuth('post'); return false;" id="nav-post">Post Listing</a></li>
+      <li><a href="#" onclick="showPage('about'); return false;" id="nav-about">About Us</a></li>
+      <li><a href="#" onclick="showPage('contact'); return false;" id="nav-contact">Contact Us</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="dark-toggle" onclick="toggleDark()" title="Toggle dark mode"><i class="fa-solid fa-moon" id="darkIcon"></i></button>
+      <button class="btn btn-ghost btn-sm" onclick="openModal('loginModal')" id="btnLogin">Login</button>
+      <button class="btn btn-primary btn-sm" onclick="openModal('signupModal')" id="btnSignup">Sign Up</button>
+      <button class="btn btn-secondary btn-sm hidden" onclick="showPage('dashboard')" id="btnDashboard"><i class="fa-solid fa-user"></i> Dashboard</button>
+      <button class="btn btn-ghost btn-sm hidden" onclick="handleLogout()" id="btnLogout">Logout</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-<header class="navbar">
-  <h2>Smart Rent</h2>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home'); toggleMenu(); return false;">Home</a>
+  <a href="#" onclick="showPage('listings'); toggleMenu(); return false;">Listings</a>
+  <a href="#" onclick="requireAuth('post'); toggleMenu(); return false;">Post Listing</a>
+  <a href="#" onclick="showPage('about'); toggleMenu(); return false;">About Us</a>
+  <a href="#" onclick="showPage('contact'); toggleMenu(); return false;">Contact Us</a>
+  <div class="divider"></div>
+  <button class="btn btn-primary" onclick="openModal('loginModal'); toggleMenu();" id="mobileLogin">Login</button>
+  <button class="btn btn-secondary hidden" onclick="handleLogout(); toggleMenu();" id="mobileLogout">Logout</button>
+</div>
 
-  <nav>
-    <button onclick="goPage('home')">Home</button>
-    <button onclick="goPage('listings')">Listings</button>
-    <button onclick="goPage('post')">Post</button>
-    <button onclick="toggleTheme()">🌙</button>
-  </nav>
-</header>
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="page-home">
 
-<section id="home" class="hero">
-  <h1>Find Your Perfect Home or Shop</h1>
-  <p>Direct owner contact | No middleman</p>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-eyebrow"><i class="fa-solid fa-circle-check"></i> Pakistan's Trusted Rental Platform</div>
+          <h1 class="hero-title">Find Your Perfect<br><span>Home or Shop</span></h1>
+          <p class="hero-sub">Connect directly with property owners across Pakistan. No middlemen, no hidden fees — just verified listings and instant WhatsApp contact.</p>
+          <div class="hero-cta">
+            <button class="btn btn-accent btn-lg" onclick="showPage('listings')"><i class="fa-solid fa-search"></i> Browse Listings</button>
+            <button class="btn btn-lg" style="background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.25);" onclick="requireAuth('post')"><i class="fa-solid fa-plus"></i> Post Property</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="num">500+</div><div class="label">Active Listings</div></div>
+            <div class="hero-stat"><div class="num">50+</div><div class="label">Cities Covered</div></div>
+            <div class="hero-stat"><div class="num">2K+</div><div class="label">Happy Renters</div></div>
+          </div>
+        </div>
+        <div class="hero-card-stack">
+          <div class="hero-card">
+            <div class="hero-card-img">🏠</div>
+            <div class="hero-card-tag">Featured Home</div>
+            <div class="hero-card-title">3 BHK Family House — Gulshan</div>
+            <div class="hero-card-loc"><i class="fa-solid fa-location-dot"></i> Karachi, Sindh</div>
+            <div class="hero-card-footer">
+              <div class="hero-card-price">PKR 35,000<span style="font-size:0.8rem;opacity:0.6">/mo</span></div>
+              <div class="hero-card-badge">Available</div>
+            </div>
+          </div>
+          <div class="hero-card"><div class="hero-card-img">🏪</div></div>
+          <div class="hero-card"><div class="hero-card-img">🏢</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <button onclick="goPage('listings')">Browse Listings</button>
-  <button onclick="goPage('post')">Post Property</button>
-</section>
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Property Types</span>
+        <h2 class="section-title">Browse by Category</h2>
+        <p class="section-sub">From cozy homes to commercial shops — explore all property types available across Pakistan.</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card cat-homes" onclick="filterAndGoListings('home')">
+          <div class="category-icon"><i class="fa-solid fa-house"></i></div>
+          <h3>Homes</h3>
+          <p>Houses, apartments, flats</p>
+        </div>
+        <div class="category-card cat-shops" onclick="filterAndGoListings('shop')">
+          <div class="category-icon"><i class="fa-solid fa-shop"></i></div>
+          <h3>Shops</h3>
+          <p>Retail & commercial units</p>
+        </div>
+        <div class="category-card cat-offices" onclick="filterAndGoListings('office')">
+          <div class="category-icon"><i class="fa-solid fa-building"></i></div>
+          <h3>Offices</h3>
+          <p>Professional workspaces</p>
+        </div>
+        <div class="category-card cat-warehouses" onclick="filterAndGoListings('warehouse')">
+          <div class="category-icon"><i class="fa-solid fa-warehouse"></i></div>
+          <h3>Warehouses</h3>
+          <p>Storage & industrial units</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="listings" class="page" style="display:none;">
-  <h2>Listings</h2>
-  <div id="listingBox" class="grid"></div>
-</section>
+  <!-- FEATURED LISTINGS -->
+  <section id="featured">
+    <div class="container">
+      <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div>
+          <span class="section-label">Just Listed</span>
+          <h2 class="section-title">Featured Properties</h2>
+        </div>
+        <button class="btn btn-secondary" onclick="showPage('listings')">View All <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="listings-grid" id="featuredListings">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </section>
 
-<section id="post" class="page" style="display:none;">
-  <h2>Add Listing</h2>
+  <!-- WHY US -->
+  <section id="why-us">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Our Advantage</span>
+        <h2 class="section-title">Why Choose Smart Rent Universe?</h2>
+        <p class="section-sub">We've built the simplest, most trustworthy way to rent property in Pakistan.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <h3>Direct Owner Contact</h3>
+          <p>Connect instantly with property owners via WhatsApp — no agents, no commission, no delays.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-shield-check"></i></div>
+          <h3>Verified Listings</h3>
+          <p>Every listing goes through our review process to ensure you're seeing genuine, available properties.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Post in Minutes</h3>
+          <p>Property owners can list their homes or shops in under 3 minutes — no paperwork required.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>50+ Cities Covered</h3>
+          <p>From Karachi to Lahore, Islamabad to Faisalabad — we cover rentals across all major Pakistani cities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <input id="title" placeholder="Title">
-  <input id="price" placeholder="Price">
-  <input id="location" placeholder="Location">
-  <input id="whatsapp" placeholder="WhatsApp">
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Real Stories</span>
+        <h2 class="section-title">What Renters Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I found my shop in DHA Karachi within 2 days of posting my requirement. The owner contacted me directly on WhatsApp — incredible experience!"</p>
+          <div class="testimonial-author"><div class="testimonial-avatar">AR</div><div><div class="testimonial-name">Ahmed Raza</div><div class="testimonial-city">Karachi</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"As a property owner in Lahore, I've tried many platforms. Smart Rent Universe gives me the most genuine tenant inquiries. My listing got 15 WhatsApp messages in the first week."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar">SH</div><div><div class="testimonial-name">Sara Hussain</div><div class="testimonial-city">Lahore</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★☆</div>
+          <p class="testimonial-text">"Finally a platform that understands Pakistan's rental market. Easy to use, listings are real, and the Pro plan is totally worth it for serious landlords."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar">MK</div><div><div class="testimonial-name">Muhammad Khan</div><div class="testimonial-city">Islamabad</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <button onclick="addListing()">Submit</button>
-</section>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Help Center</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do I find a rental property? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Browse our Listings page, use search and filters to narrow down by location, property type, and price. Click any listing to see full details and contact the owner directly via WhatsApp.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Is Smart Rent Universe free to use? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Yes! Browsing and contacting owners is completely free. Property owners get 10 free listings on our Starter plan. The Pro plan (PKR 999/month) allows up to 100 listings and adds featured placement.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do I post my property? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Create a free account, go to "Post Listing", fill in your property details (title, description, price, location, type, WhatsApp number), and submit. Your listing goes live instantly.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What is a Featured Listing? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Featured listings appear at the top of search results and on the homepage, giving your property maximum visibility. Featured placement is available on the Pro plan.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do I upgrade to Pro? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Go to your Dashboard → Upgrade Plan. Send the payment via EasyPaisa or JazzCash to our official numbers, fill out the payment form, and our team will verify and activate your Pro account within 24 hours.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Is my personal data secure? <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Absolutely. We use Firebase Authentication and Firestore with strict security rules. Only you can access and edit your own listings and profile data.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <p>WhatsApp: +923441695860</p>
-  <p>EasyPaisa: +923441695860</p>
-  <p>JazzCash: +923272358384</p>
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-label">Simple Pricing</span>
+        <h2 class="section-title">Plans for Every Landlord</h2>
+        <p class="section-sub">Start free, upgrade when you need more reach.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-price"><sup>PKR</sup>0</div>
+          <div class="pricing-period">Free forever</div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Up to 10 listings</div>
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> WhatsApp contact button</div>
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Basic listing page</div>
+            <div class="pricing-feature"><i class="fa-solid fa-xmark" style="color:#e53e3e"></i> Featured placement</div>
+            <div class="pricing-feature"><i class="fa-solid fa-xmark" style="color:#e53e3e"></i> Priority support</div>
+          </div>
+          <button class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="openModal('signupModal')">Get Started Free</button>
+        </div>
+        <div class="pricing-card popular">
+          <div class="pricing-popular-badge">⭐ Most Popular</div>
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-price"><sup>PKR</sup>999</div>
+          <div class="pricing-period">per month</div>
+          <div class="pricing-features">
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Up to 100 listings</div>
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Featured listing placement</div>
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Priority search ranking</div>
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Pro badge on profile</div>
+            <div class="pricing-feature"><i class="fa-solid fa-check"></i> Priority support</div>
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showPage('payment')">Upgrade to Pro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- End Home Page -->
+
+<!-- ===== LISTINGS PAGE ===== -->
+<div class="page" id="page-listings">
+  <div class="listings-page-header">
+    <div class="container">
+      <span class="section-label">All Properties</span>
+      <h1 class="section-title">Browse Listings</h1>
+    </div>
+  </div>
+  <div style="padding:32px 0 60px;">
+    <div class="container">
+      <div class="search-bar">
+        <div class="search-input-wrap form-group" style="margin:0;">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" class="form-control" id="searchInput" placeholder="Search by title or location..." oninput="applyFilters()" />
+        </div>
+        <div class="form-group" style="margin:0;">
+          <select class="form-control filter-select" id="typeFilter" onchange="applyFilters()">
+            <option value="">All Types</option>
+            <option value="home">Home</option>
+            <option value="shop">Shop</option>
+            <option value="office">Office</option>
+            <option value="warehouse">Warehouse</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0;">
+          <select class="form-control filter-select" id="cityFilter" onchange="applyFilters()">
+            <option value="">All Cities</option>
+            <option>Karachi</option><option>Lahore</option><option>Islamabad</option>
+            <option>Faisalabad</option><option>Rawalpindi</option><option>Multan</option>
+            <option>Peshawar</option><option>Quetta</option><option>Hyderabad</option>
+            <option>Sialkot</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0;">
+          <select class="form-control filter-select" id="sortFilter" onchange="applyFilters()">
+            <option value="newest">Newest First</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="featured">Featured First</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="applyFilters()"><i class="fa-solid fa-filter"></i> Filter</button>
+      </div>
+      <div class="listings-grid" id="allListings">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LISTING DETAIL PAGE ===== -->
+<div class="page" id="page-detail">
+  <div class="listing-detail-wrap">
+    <div class="container">
+      <button class="btn btn-ghost mb-2" onclick="showPage('listings')"><i class="fa-solid fa-arrow-left"></i> Back to Listings</button>
+      <div class="detail-grid" id="detailContent">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== POST LISTING PAGE ===== -->
+<div class="page" id="page-post">
+  <div class="post-listing-wrap">
+    <div class="post-listing-card">
+      <span class="section-label">Property Owners</span>
+      <h2 class="section-title" style="font-size:1.8rem;">Post a New Listing</h2>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:28px;">Fill in your property details. Tenants will contact you directly on WhatsApp.</p>
+      <form id="postListingForm" onsubmit="submitListing(event)">
+        <div class="form-group">
+          <label>Property Title *</label>
+          <input type="text" class="form-control" id="pl-title" placeholder="e.g. 2 Bedroom Flat in Gulshan Block 5" required />
+        </div>
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea class="form-control" id="pl-desc" rows="4" placeholder="Describe the property — size, condition, amenities, floor, nearby landmarks..." required style="resize:vertical;"></textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label>Monthly Rent (PKR) *</label>
+            <input type="number" class="form-control" id="pl-price" placeholder="e.g. 25000" min="1000" required />
+          </div>
+          <div class="form-group">
+            <label>Property Type *</label>
+            <select class="form-control" id="pl-type" required>
+              <option value="">Select type</option>
+              <option value="home">Home / Apartment</option>
+              <option value="shop">Shop / Retail</option>
+              <option value="office">Office</option>
+              <option value="warehouse">Warehouse</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Location *</label>
+          <input type="text" class="form-control" id="pl-location" placeholder="e.g. Gulshan-e-Iqbal Block 5, Karachi" required />
+        </div>
+        <div class="form-group">
+          <label>Your WhatsApp Number *</label>
+          <input type="tel" class="form-control" id="pl-whatsapp" placeholder="e.g. 03001234567" required pattern="[0-9]{10,13}" />
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">Tenants will use this number to contact you. Include country code if needed.</div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;" id="submitListingBtn">
+          <i class="fa-solid fa-plus"></i> Post Listing
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DASHBOARD PAGE ===== -->
+<div class="page" id="page-dashboard">
+  <div class="container">
+    <div class="dashboard-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-avatar" id="dashAvatar">U</div>
+        <div class="sidebar-name" id="dashName">Loading...</div>
+        <div class="sidebar-email" id="dashEmail"></div>
+        <div id="dashPlanBadge" style="text-align:center;margin-bottom:20px;"></div>
+        <nav class="sidebar-nav">
+          <a href="#" class="active" onclick="showDashPanel('overview'); return false;" id="dash-nav-overview"><i class="fa-solid fa-chart-pie"></i> Overview</a>
+          <a href="#" onclick="showDashPanel('mylistings'); return false;" id="dash-nav-mylistings"><i class="fa-solid fa-list"></i> My Listings</a>
+          <a href="#" onclick="showDashPanel('upgrade'); return false;" id="dash-nav-upgrade"><i class="fa-solid fa-crown"></i> Upgrade Plan</a>
+          <a href="#" onclick="showDashPanel('settings'); return false;" id="dash-nav-settings"><i class="fa-solid fa-gear"></i> Account Settings</a>
+          <div class="divider"></div>
+          <a href="#" onclick="handleLogout(); return false;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </nav>
+      </aside>
+      <!-- Main Content -->
+      <main class="dashboard-content">
+        <!-- Overview -->
+        <div class="dash-panel active" id="panel-overview">
+          <div class="dash-header"><h2>Dashboard Overview</h2><p>Welcome back! Here's a summary of your activity.</p></div>
+          <div class="stats-row">
+            <div class="stat-card"><div class="stat-label">My Listings</div><div class="stat-value" id="stat-listings">0</div></div>
+            <div class="stat-card"><div class="stat-label">Plan</div><div class="stat-value" id="stat-plan" style="font-size:1.2rem;">Starter</div></div>
+            <div class="stat-card"><div class="stat-label">Slots Used</div><div class="stat-value" id="stat-slots">0 / 10</div></div>
+          </div>
+          <div>
+            <h3 style="font-weight:700;margin-bottom:16px;">Quick Actions</h3>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="showPage('post')"><i class="fa-solid fa-plus"></i> Post New Listing</button>
+              <button class="btn btn-secondary" onclick="showPage('listings')"><i class="fa-solid fa-search"></i> Browse Listings</button>
+              <button class="btn btn-secondary" onclick="showDashPanel('upgrade')"><i class="fa-solid fa-crown"></i> Upgrade to Pro</button>
+            </div>
+          </div>
+        </div>
+        <!-- My Listings -->
+        <div class="dash-panel" id="panel-mylistings">
+          <div class="dash-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+            <div><h2>My Listings</h2><p>Manage your posted properties.</p></div>
+            <button class="btn btn-primary btn-sm" onclick="showPage('post')"><i class="fa-solid fa-plus"></i> Add New</button>
+          </div>
+          <div id="myListingsContainer"><div class="spinner"></div></div>
+        </div>
+        <!-- Upgrade -->
+        <div class="dash-panel" id="panel-upgrade">
+          <div class="dash-header"><h2>Upgrade to Pro</h2><p>Unlock more listings and featured placement.</p></div>
+          <div class="pricing-grid" style="max-width:none;margin:0 0 28px;">
+            <div class="pricing-card" style="max-width:300px;">
+              <div class="pricing-name">Starter (Current)</div>
+              <div class="pricing-price"><sup>PKR</sup>0</div>
+              <div class="pricing-period">Free forever</div>
+              <div class="pricing-features">
+                <div class="pricing-feature"><i class="fa-solid fa-check"></i> 10 listings</div>
+                <div class="pricing-feature"><i class="fa-solid fa-xmark" style="color:#e53e3e"></i> Featured placement</div>
+              </div>
+              <button class="btn btn-secondary" disabled style="width:100%;justify-content:center;">Current Plan</button>
+            </div>
+            <div class="pricing-card popular" style="max-width:300px;">
+              <div class="pricing-popular-badge">Recommended</div>
+              <div class="pricing-name">Pro</div>
+              <div class="pricing-price"><sup>PKR</sup>999</div>
+              <div class="pricing-period">per month</div>
+              <div class="pricing-features">
+                <div class="pricing-feature"><i class="fa-solid fa-check"></i> 100 listings</div>
+                <div class="pricing-feature"><i class="fa-solid fa-check"></i> Featured placement</div>
+                <div class="pricing-feature"><i class="fa-solid fa-check"></i> Pro badge</div>
+                <div class="pricing-feature"><i class="fa-solid fa-check"></i> Priority support</div>
+              </div>
+              <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showPage('payment')">Pay & Upgrade</button>
+            </div>
+          </div>
+        </div>
+        <!-- Settings -->
+        <div class="dash-panel" id="panel-settings">
+          <div class="dash-header"><h2>Account Settings</h2><p>Update your profile information.</p></div>
+          <div class="post-listing-card" style="max-width:520px;padding:28px;">
+            <div class="form-group"><label>Display Name</label><input type="text" class="form-control" id="settings-name" /></div>
+            <div class="form-group"><label>Email Address</label><input type="email" class="form-control" id="settings-email" disabled style="opacity:0.7;" /></div>
+            <button class="btn btn-primary" onclick="saveSettings()"><i class="fa-solid fa-save"></i> Save Changes</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAYMENT PAGE ===== -->
+<div class="page" id="page-payment">
+  <div class="payment-wrap">
+    <div class="container" style="max-width:680px;">
+      <button class="btn btn-ghost mb-2" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+      <span class="section-label">Pro Upgrade</span>
+      <h1 class="section-title" style="font-size:2rem;">Complete Your Payment</h1>
+      <p style="color:var(--text-secondary);margin-bottom:32px;">Send PKR 999 to either EasyPaisa or JazzCash, then fill out the form below to request your Pro activation.</p>
+
+      <div class="payment-steps" style="margin-bottom:28px;">
+        <div class="payment-step"><div class="step-num">1</div><div><strong>Choose a payment method</strong> below and send PKR 999 from your mobile wallet.</div></div>
+        <div class="payment-step"><div class="step-num">2</div><div><strong>Note your transaction ID</strong> — you'll need it in the form below.</div></div>
+        <div class="payment-step"><div class="step-num">3</div><div><strong>Submit the form</strong>. Our team will verify and activate Pro within 24 hours.</div></div>
+      </div>
+
+      <div class="payment-grid">
+        <div class="payment-method-card selected" id="pmEasypaisa" onclick="selectPayMethod('easypaisa')">
+          <div class="payment-method-icon">💚</div>
+          <div class="payment-method-name">EasyPaisa</div>
+          <div class="payment-method-number">0344-1695860</div>
+        </div>
+        <div class="payment-method-card" id="pmJazzcash" onclick="selectPayMethod('jazzcash')">
+          <div class="payment-method-icon">🔴</div>
+          <div class="payment-method-name">JazzCash</div>
+          <div class="payment-method-number">0327-2358384</div>
+        </div>
+      </div>
+
+      <div class="post-listing-card" style="padding:28px;">
+        <h3 style="font-weight:700;margin-bottom:20px;">Payment Request Form</h3>
+        <form id="paymentForm" onsubmit="submitPayment(event)">
+          <div class="form-group"><label>Your Name *</label><input type="text" class="form-control" id="pay-name" required /></div>
+          <div class="form-group"><label>Email Address *</label><input type="email" class="form-control" id="pay-email" required /></div>
+          <div class="form-group"><label>Transaction ID *</label><input type="text" class="form-control" id="pay-txid" placeholder="e.g. TXN-1234567890" required /></div>
+          <div class="form-group">
+            <label>Payment Method *</label>
+            <select class="form-control" id="pay-method" required>
+              <option value="easypaisa">EasyPaisa</option>
+              <option value="jazzcash">JazzCash</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Amount Sent (PKR) *</label><input type="number" class="form-control" id="pay-amount" value="999" required /></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;" id="paySubmitBtn">
+            <i class="fa-solid fa-paper-plane"></i> Submit Payment Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT PAGE ===== -->
+<div class="page" id="page-about">
+  <div class="content-page">
+    <div class="container">
+      <div class="about-hero">
+        <span class="section-label">Our Story</span>
+        <h1 class="section-title">About Smart Rent Universe</h1>
+        <p class="section-sub" style="margin:0 auto;font-size:1.05rem;">Smart Rent Universe helps people find rental homes and shops easily in Pakistan while helping property owners connect with genuine tenants. We believe renting should be simple, transparent, and direct — no middlemen, no hidden fees.</p>
+      </div>
+
+      <div style="background:var(--surface-2);border-radius:var(--radius-xl);padding:40px;margin-bottom:48px;">
+        <h2 style="font-weight:800;margin-bottom:14px;">Our Mission</h2>
+        <p style="color:var(--text-secondary);line-height:1.8;">Pakistan's rental market has long been dominated by agents and informal word-of-mouth. We built Smart Rent Universe to digitize and democratize this process — giving both renters and landlords a powerful, free platform to connect on their own terms. Whether you're a young professional looking for an apartment in Karachi or a shopkeeper searching for commercial space in Lahore, we've made the process faster and more trustworthy than ever before.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card"><i class="fa-solid fa-bullseye"></i><h3>Our Mission</h3><p>Make rental property accessible to every Pakistani</p></div>
+        <div class="about-card"><i class="fa-solid fa-eye"></i><h3>Our Vision</h3><p>Pakistan's most trusted property rental marketplace</p></div>
+        <div class="about-card"><i class="fa-solid fa-heart"></i><h3>Our Values</h3><p>Transparency, trust, and direct connections</p></div>
+        <div class="about-card"><i class="fa-solid fa-map-pin"></i><h3>Founded In</h3><p>Pakistan — serving all major cities nationwide</p></div>
+      </div>
+
+      <div style="margin-top:48px;text-align:center;">
+        <h2 style="font-weight:800;margin-bottom:14px;">Get in Touch</h2>
+        <p style="color:var(--text-secondary);margin-bottom:24px;">Have questions? Our team is here to help.</p>
+        <button class="btn btn-primary btn-lg" onclick="showPage('contact')"><i class="fa-solid fa-envelope"></i> Contact Us</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTACT PAGE ===== -->
+<div class="page" id="page-contact">
+  <div class="content-page">
+    <div class="container" style="max-width:900px;">
+      <div class="text-center" style="margin-bottom:48px;">
+        <span class="section-label">Get in Touch</span>
+        <h1 class="section-title">Contact Us</h1>
+        <p class="section-sub" style="margin:0 auto;">Have a question, feedback, or need help? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon wa"><i class="fa-brands fa-whatsapp fa-lg"></i></div>
+            <div>
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-value">+92 344 1695860</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);">Mon–Sat, 9am–9pm PKT</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon em"><i class="fa-solid fa-envelope fa-lg"></i></div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">muhammadalikn53@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon ph"><i class="fa-solid fa-mobile-screen fa-lg"></i></div>
+            <div>
+              <div class="contact-item-label">EasyPaisa / JazzCash</div>
+              <div class="contact-item-value">0344-1695860</div>
+            </div>
+          </div>
+          <a href="https://wa.me/923441695860" target="_blank" class="wa-btn-lg">
+            <i class="fa-brands fa-whatsapp fa-lg"></i> Chat on WhatsApp
+          </a>
+          <div style="margin-top:28px;">
+            <h4 style="font-weight:700;margin-bottom:14px;">Follow Us</h4>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="https://facebook.com" target="_blank" class="social-icon" style="background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://instagram.com" target="_blank" class="social-icon" style="background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://t.me" target="_blank" class="social-icon" style="background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);"><i class="fa-brands fa-telegram"></i></a>
+              <a href="https://linkedin.com" target="_blank" class="social-icon" style="background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border);"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="post-listing-card" style="padding:28px;">
+            <h3 style="font-weight:700;margin-bottom:20px;">Send a Message</h3>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+              <div class="form-group"><label>Your Name *</label><input type="text" class="form-control" id="cf-name" required /></div>
+              <div class="form-group"><label>Email Address *</label><input type="email" class="form-control" id="cf-email" required /></div>
+              <div class="form-group"><label>Subject *</label><input type="text" class="form-control" id="cf-subject" required /></div>
+              <div class="form-group"><label>Message *</label><textarea class="form-control" id="cf-message" rows="4" required style="resize:vertical;"></textarea></div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="cfSubmitBtn"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><div class="logo-icon"><i class="fa-solid fa-building"></i></div> Smart Rent Universe</div>
+        <p>Pakistan's trusted rental marketplace. Find homes and shops with direct owner contact — simple, fast, and free.</p>
+        <div class="footer-social">
+          <a href="https://facebook.com" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://t.me" target="_blank" class="social-icon" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://wa.me/923441695860" target="_blank" class="social-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+          <li><a href="#" onclick="showPage('listings');return false;">Browse Listings</a></li>
+          <li><a href="#" onclick="requireAuth('post');return false;">Post Property</a></li>
+          <li><a href="#" onclick="showPage('payment');return false;">Upgrade to Pro</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('about');return false;">About Us</a></li>
+          <li><a href="#" onclick="showPage('contact');return false;">Contact Us</a></li>
+          <li><a href="#" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});return false;">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item"><i class="fa-brands fa-whatsapp"></i> +92 344 1695860</div>
+        <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i> muhammadalikn53@gmail.com</div>
+        <div class="footer-contact-item"><i class="fa-solid fa-mobile-screen"></i> EasyPaisa: 0344-1695860</div>
+        <div class="footer-contact-item"><i class="fa-solid fa-mobile-screen"></i> JazzCash: 0327-2358384</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Smart Rent Universe. All rights reserved.</p>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;">Made with ❤️ for Pakistan</p>
+    </div>
+  </div>
 </footer>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<!-- ===== AUTH MODALS ===== -->
+<!-- Login Modal -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('loginModal')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-title">Welcome Back</div>
+    <div class="modal-sub">Sign in to manage your listings and more.</div>
+    <div class="social-login">
+      <button class="btn-google" onclick="loginWithGoogle()">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z" fill="#EA4335"/></svg>
+        Continue with Google
+      </button>
+    </div>
+    <div style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin:10px 0;position:relative;">
+      <span style="background:var(--surface);padding:0 10px;position:relative;z-index:1;">or sign in with email</span>
+      <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border);z-index:0;"></div>
+    </div>
+    <form onsubmit="loginWithEmail(event)">
+      <div class="form-group"><label>Email Address</label><input type="email" class="form-control" id="loginEmail" required placeholder="you@example.com" /></div>
+      <div class="form-group"><label>Password</label><input type="password" class="form-control" id="loginPassword" required placeholder="Your password" /></div>
+      <div id="loginError" class="error-msg"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" id="loginBtn">Sign In</button>
+    </form>
+    <div class="auth-switch mt-2">Don't have an account? <a href="#" onclick="closeModal('loginModal');openModal('signupModal');return false;">Sign up free</a></div>
+  </div>
+</div>
 
-<script src="app.js"></script>
+<!-- Signup Modal -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('signupModal')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-title">Create Account</div>
+    <div class="modal-sub">Join thousands of landlords and renters across Pakistan.</div>
+    <div class="social-login">
+      <button class="btn-google" onclick="loginWithGoogle()">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z" fill="#EA4335"/></svg>
+        Sign up with Google
+      </button>
+    </div>
+    <div style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin:10px 0;position:relative;">
+      <span style="background:var(--surface);padding:0 10px;position:relative;z-index:1;">or create with email</span>
+      <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border);z-index:0;"></div>
+    </div>
+    <form onsubmit="signupWithEmail(event)">
+      <div class="form-group"><label>Full Name</label><input type="text" class="form-control" id="signupName" required placeholder="Muhammad Ali" /></div>
+      <div class="form-group"><label>Email Address</label><input type="email" class="form-control" id="signupEmail" required placeholder="you@example.com" /></div>
+      <div class="form-group"><label>Password</label><input type="password" class="form-control" id="signupPassword" required placeholder="Min 6 characters" minlength="6" /></div>
+      <div id="signupError" class="error-msg"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" id="signupBtn">Create Account</button>
+    </form>
+    <div class="auth-switch mt-2">Already have an account? <a href="#" onclick="closeModal('signupModal');openModal('loginModal');return false;">Sign in</a></div>
+  </div>
+</div>
 
+<!-- Edit Listing Modal -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('editModal')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-title">Edit Listing</div>
+    <div class="modal-sub">Update your property details.</div>
+    <form onsubmit="saveEditListing(event)">
+      <input type="hidden" id="edit-id" />
+      <div class="form-group"><label>Title *</label><input type="text" class="form-control" id="edit-title" required /></div>
+      <div class="form-group"><label>Description *</label><textarea class="form-control" id="edit-desc" rows="3" required style="resize:vertical;"></textarea></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group"><label>Price (PKR) *</label><input type="number" class="form-control" id="edit-price" required /></div>
+        <div class="form-group"><label>Type *</label>
+          <select class="form-control" id="edit-type">
+            <option value="home">Home</option><option value="shop">Shop</option>
+            <option value="office">Office</option><option value="warehouse">Warehouse</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Location *</label><input type="text" class="form-control" id="edit-location" required /></div>
+      <div class="form-group"><label>WhatsApp *</label><input type="tel" class="form-control" id="edit-whatsapp" required /></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" id="editSaveBtn"><i class="fa-solid fa-save"></i> Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== AI ASSISTANT ===== -->
+<button class="ai-bubble" onclick="toggleAI()" title="Rental Assistant" id="aiBubble">
+  <i class="fa-solid fa-robot"></i>
+</button>
+<div class="ai-chat hidden" id="aiChat">
+  <div class="ai-chat-header">
+    <div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+    <div class="ai-chat-header-info">
+      <h4>Rent Assistant</h4>
+      <p>Ask me anything about rentals</p>
+    </div>
+    <button class="ai-close-btn" onclick="toggleAI()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-msg bot">
+      <div class="ai-msg-bubble">👋 Asalam o Alikum! I'm your Smart Rent Assistant. Ask me about finding properties, posting listings, or our plans. How can I help you today?</div>
+    </div>
+  </div>
+  <div class="ai-suggestions" id="aiSuggestions">
+    <span class="ai-suggest-chip" onclick="sendAIMsg('How do I find a rental?')">Find a rental</span>
+    <span class="ai-suggest-chip" onclick="sendAIMsg('How to post a listing?')">Post a listing</span>
+    <span class="ai-suggest-chip" onclick="sendAIMsg('What is the Pro plan?')">Pro plan</span>
+    <span class="ai-suggest-chip" onclick="sendAIMsg('Contact information')">Contact info</span>
+  </div>
+  <div class="ai-chat-input">
+    <input type="text" id="aiInput" placeholder="Type your question..." onkeydown="if(event.key==='Enter') sendAIMsg()" />
+    <button class="ai-voice-btn" id="voiceBtn" onclick="toggleVoice()" title="Voice input"><i class="fa-solid fa-microphone"></i></button>
+    <button class="ai-send-btn" onclick="sendAIMsg()"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ===== FIREBASE & APP JS ===== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, getDocs, getDoc, doc, updateDoc, deleteDoc, query, where, orderBy, serverTimestamp, setDoc, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBjWdkXI1m1RRYECz-n9z8zMxzDEQiME2U",
+    authDomain: "rent-shop-home.firebaseapp.com",
+    projectId: "rent-shop-home",
+    storageBucket: "rent-shop-home.firebasestorage.app",
+    messagingSenderId: "911147428005",
+    appId: "1:911147428005:web:e57a0cb44221293968054c",
+    measurementId: "G-2RWMXEVN2W"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  let currentUser = null;
+  let allListingsCache = [];
+  let currentFilter = '';
+
+  // ===== AUTH STATE =====
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+    updateNavForAuth(user);
+    if (user) {
+      // Auto-fill payment/settings form
+      const ne = document.getElementById('pay-email'); if(ne) ne.value = user.email || '';
+      const nn = document.getElementById('pay-name'); if(nn) nn.value = user.displayName || '';
+      const se = document.getElementById('settings-email'); if(se) se.value = user.email || '';
+      const sn = document.getElementById('settings-name'); if(sn) sn.value = user.displayName || '';
+      // Update sidebar
+      if(document.getElementById('dashName')) {
+        const initials = (user.displayName||user.email||'U').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+        document.getElementById('dashAvatar').textContent = initials;
+        document.getElementById('dashName').textContent = user.displayName || 'User';
+        document.getElementById('dashEmail').textContent = user.email || '';
+        const userDoc = await getDoc(doc(db,'users',user.uid)).catch(()=>null);
+        if(userDoc && userDoc.exists()) {
+          const data = userDoc.data();
+          const isPro = data.isPro || false;
+          document.getElementById('dashPlanBadge').innerHTML = isPro ? '<span class="badge badge-pro"><i class="fa-solid fa-crown"></i> Pro Member</span>' : '<span class="badge badge-free">Starter Plan</span>';
+          document.getElementById('stat-plan').textContent = isPro ? 'Pro' : 'Starter';
+        }
+      }
+    }
+  });
+
+  function updateNavForAuth(user) {
+    const show = (id, v) => { const el=document.getElementById(id); if(el) el.classList.toggle('hidden',!v); };
+    show('btnLogin', !user); show('btnSignup', !user);
+    show('btnDashboard', !!user); show('btnLogout', !!user);
+    show('mobileLogin', !user); show('mobileLogout', !!user);
+  }
+
+  // ===== AUTH FUNCTIONS =====
+  window.loginWithEmail = async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const pass = document.getElementById('loginPassword').value;
+    const errEl = document.getElementById('loginError');
+    const btn = document.getElementById('loginBtn');
+    errEl.textContent = ''; btn.textContent = 'Signing in...'; btn.disabled = true;
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      closeModal('loginModal');
+      showToast('Welcome back!', 'success');
+    } catch(err) {
+      errEl.textContent = friendlyAuthError(err.code);
+    } finally { btn.textContent = 'Sign In'; btn.disabled = false; }
+  };
+
+  window.signupWithEmail = async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value;
+    const pass = document.getElementById('signupPassword').value;
+    const errEl = document.getElementById('signupError');
+    const btn = document.getElementById('signupBtn');
+    errEl.textContent = ''; btn.textContent = 'Creating account...'; btn.disabled = true;
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
+      await updateProfile(cred.user, { displayName: name });
+      await setDoc(doc(db,'users',cred.user.uid), { name, email, plan:'starter', isPro:false, createdAt: serverTimestamp() });
+      closeModal('signupModal');
+      showToast('Account created! Welcome to Smart Rent Universe.', 'success');
+    } catch(err) {
+      errEl.textContent = friendlyAuthError(err.code);
+    } finally { btn.textContent = 'Create Account'; btn.disabled = false; }
+  };
+
+  window.loginWithGoogle = async () => {
+    try {
+      const cred = await signInWithPopup(auth, googleProvider);
+      const user = cred.user;
+      // Create user doc if new
+      const userDoc = await getDoc(doc(db,'users',user.uid));
+      if(!userDoc.exists()) {
+        await setDoc(doc(db,'users',user.uid), { name: user.displayName||'', email: user.email||'', plan:'starter', isPro:false, createdAt: serverTimestamp() });
+      }
+      closeModal('loginModal'); closeModal('signupModal');
+      showToast('Signed in with Google!', 'success');
+    } catch(err) { showToast('Google sign-in failed. Please try again.', 'error'); }
+  };
+
+  window.handleLogout = async () => {
+    await signOut(auth);
+    showPage('home');
+    showToast('Signed out successfully.', 'info');
+  };
+
+  // ===== LISTINGS =====
+  async function fetchListings() {
+    try {
+      const snap = await getDocs(query(collection(db,'listings'), orderBy('createdAt','desc')));
+      allListingsCache = snap.docs.map(d=>({id:d.id,...d.data()}));
+      return allListingsCache;
+    } catch(e) { return []; }
+  }
+
+  window.loadFeaturedListings = async () => {
+    const container = document.getElementById('featuredListings');
+    try {
+      const snap = await getDocs(query(collection(db,'listings'), limit(6)));
+      const listings = snap.docs.map(d=>({id:d.id,...d.data()}));
+      if(listings.length === 0) {
+        container.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="fa-solid fa-house"></i><h3>No listings yet</h3><p>Be the first to post a property!</p><button class="btn btn-primary" onclick="requireAuth(\'post\')">Post First Listing</button></div>';
+        return;
+      }
+      container.innerHTML = listings.map(renderListingCard).join('');
+    } catch(e) { container.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1;">Unable to load listings. Please check your connection.</p>'; }
+  };
+
+  window.loadAllListings = async () => {
+    const container = document.getElementById('allListings');
+    container.innerHTML = '<div class="spinner"></div>';
+    const listings = allListingsCache.length ? allListingsCache : await fetchListings();
+    renderFilteredListings(listings);
+  };
+
+  window.applyFilters = () => {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const type = document.getElementById('typeFilter').value;
+    const city = document.getElementById('cityFilter').value.toLowerCase();
+    const sort = document.getElementById('sortFilter').value;
+    let filtered = [...allListingsCache];
+    if(search) filtered = filtered.filter(l => (l.title||'').toLowerCase().includes(search) || (l.location||'').toLowerCase().includes(search));
+    if(type) filtered = filtered.filter(l => l.type === type);
+    if(city) filtered = filtered.filter(l => (l.location||'').toLowerCase().includes(city));
+    if(sort === 'price-asc') filtered.sort((a,b)=>a.price-b.price);
+    else if(sort === 'price-desc') filtered.sort((a,b)=>b.price-a.price);
+    else if(sort === 'featured') filtered.sort((a,b)=>(b.isFeatured?1:0)-(a.isFeatured?1:0));
+    renderFilteredListings(filtered);
+  };
+
+  function renderFilteredListings(listings) {
+    const container = document.getElementById('allListings');
+    if(!listings.length) {
+      container.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="fa-solid fa-search"></i><h3>No listings found</h3><p>Try adjusting your filters or search term.</p></div>';
+      return;
+    }
+    container.innerHTML = listings.map(renderListingCard).join('');
+  }
+
+  function getTypeEmoji(type) { return {home:'🏠',shop:'🏪',office:'🏢',warehouse:'🏭'}[type]||'🏠'; }
+
+  function renderListingCard(l) {
+    const price = l.price ? `PKR ${Number(l.price).toLocaleString()}` : 'Contact Owner';
+    return `
+    <div class="listing-card" onclick="viewDetail('${l.id}')">
+      <div class="listing-img">
+        ${l.isFeatured ? '<div class="featured-badge"><i class="fa-solid fa-star"></i> Featured</div>' : ''}
+        <div class="type-badge">${(l.type||'home').charAt(0).toUpperCase()+(l.type||'home').slice(1)}</div>
+        ${getTypeEmoji(l.type)}
+      </div>
+      <div class="listing-body">
+        <div class="listing-title">${escHtml(l.title||'Untitled Listing')}</div>
+        <div class="listing-loc"><i class="fa-solid fa-location-dot"></i> ${escHtml(l.location||'Location not specified')}</div>
+        <div class="listing-price">${price} <span>/month</span></div>
+        <div class="listing-actions">
+          <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();viewDetail('${l.id}')"><i class="fa-solid fa-eye"></i> View</button>
+          ${l.whatsapp ? `<a href="https://wa.me/92${l.whatsapp.replace(/^0/,'').replace(/\D/,'')}" target="_blank" onclick="event.stopPropagation();" class="btn whatsapp-btn btn-sm"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  window.viewDetail = async (id) => {
+    showPage('detail');
+    const container = document.getElementById('detailContent');
+    container.innerHTML = '<div class="spinner"></div>';
+    try {
+      let listing = allListingsCache.find(l=>l.id===id);
+      if(!listing) { const d = await getDoc(doc(db,'listings',id)); listing = {id,...d.data()}; }
+      const price = listing.price ? `PKR ${Number(listing.price).toLocaleString()}` : 'Contact Owner';
+      const waNum = listing.whatsapp ? listing.whatsapp.replace(/^0/,'').replace(/\D/g,'') : null;
+      container.innerHTML = `
+        <div>
+          <div class="detail-img">${getTypeEmoji(listing.type)}</div>
+          ${listing.isFeatured ? '<div style="margin-bottom:12px;"><span class="badge badge-featured"><i class="fa-solid fa-star"></i> Featured Listing</span></div>' : ''}
+          <div class="detail-title">${escHtml(listing.title||'Untitled')}</div>
+          <div class="detail-loc"><i class="fa-solid fa-location-dot"></i> ${escHtml(listing.location||'Location not specified')}</div>
+          <div class="detail-price">${price} <span>/month</span></div>
+          <div class="divider"></div>
+          <h3 style="font-weight:700;margin-bottom:12px;">Property Description</h3>
+          <div class="detail-desc">${escHtml(listing.description||'No description provided.').replace(/\n/g,'<br>')}</div>
+          <div class="divider"></div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <div><span style="font-size:0.78rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Type</span><div style="font-weight:600;margin-top:4px;">${(listing.type||'home').charAt(0).toUpperCase()+(listing.type||'home').slice(1)}</div></div>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="contact-card">
+            <h3 style="font-weight:700;margin-bottom:16px;">Contact Owner</h3>
+            ${waNum ? `
+            <a href="https://wa.me/92${waNum}?text=Hi, I found your listing '${encodeURIComponent(listing.title||'property')}' on Smart Rent Universe. Is it still available?" target="_blank" class="btn btn-lg" style="background:#25D366;color:#fff;width:100%;justify-content:center;margin-bottom:14px;box-shadow:0 4px 20px rgba(37,211,102,0.35);">
+              <i class="fa-brands fa-whatsapp fa-lg"></i> Chat on WhatsApp
+            </a>
+            <div style="font-size:0.82rem;color:var(--text-muted);text-align:center;">+92 ${waNum}</div>
+            ` : '<p style="color:var(--text-muted);font-size:0.88rem;">No contact info provided.</p>'}
+            <div class="divider"></div>
+            <div style="font-size:0.82rem;color:var(--text-muted);">Listed on Smart Rent Universe. Always verify property details in person before making any payments.</div>
+          </div>
+          <div style="margin-top:16px;text-align:center;">
+            <button class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="showPage('listings')"><i class="fa-solid fa-arrow-left"></i> Back to Listings</button>
+          </div>
+        </div>`;
+    } catch(e) { container.innerHTML = '<p style="color:var(--text-muted);">Unable to load listing details.</p>'; }
+  };
+
+  // ===== POST LISTING =====
+  window.submitListing = async (e) => {
+    e.preventDefault();
+    if(!currentUser) { openModal('loginModal'); return; }
+    const btn = document.getElementById('submitListingBtn');
+    btn.textContent = 'Posting...'; btn.disabled = true;
+
+    const userDoc = await getDoc(doc(db,'users',currentUser.uid)).catch(()=>null);
+    const isPro = userDoc?.data()?.isPro || false;
+    const maxListings = isPro ? 100 : 10;
+    const mySnap = await getDocs(query(collection(db,'listings'), where('ownerId','==',currentUser.uid)));
+    if(mySnap.size >= maxListings) {
+      showToast(`You've reached your ${maxListings} listing limit. ${!isPro?'Upgrade to Pro for 100 listings.':''}`, 'error');
+      btn.innerHTML = '<i class="fa-solid fa-plus"></i> Post Listing'; btn.disabled = false;
+      return;
+    }
+
+    try {
+      await addDoc(collection(db,'listings'), {
+        title: document.getElementById('pl-title').value.trim(),
+        description: document.getElementById('pl-desc').value.trim(),
+        price: Number(document.getElementById('pl-price').value),
+        location: document.getElementById('pl-location').value.trim(),
+        type: document.getElementById('pl-type').value,
+        whatsapp: document.getElementById('pl-whatsapp').value.trim(),
+        ownerId: currentUser.uid,
+        isFeatured: isPro,
+        createdAt: serverTimestamp()
+      });
+      document.getElementById('postListingForm').reset();
+      showToast('Listing posted successfully!', 'success');
+      allListingsCache = []; // clear cache
+      showPage('dashboard');
+      loadMyListings();
+    } catch(err) { showToast('Failed to post listing. Please try again.', 'error'); }
+    btn.innerHTML = '<i class="fa-solid fa-plus"></i> Post Listing'; btn.disabled = false;
+  };
+
+  // ===== MY LISTINGS =====
+  window.loadMyListings = async () => {
+    if(!currentUser) return;
+    const container = document.getElementById('myListingsContainer');
+    container.innerHTML = '<div class="spinner"></div>';
+    try {
+      const snap = await getDocs(query(collection(db,'listings'), where('ownerId','==',currentUser.uid), orderBy('createdAt','desc')));
+      const listings = snap.docs.map(d=>({id:d.id,...d.data()}));
+      document.getElementById('stat-listings').textContent = listings.length;
+      const userDoc = await getDoc(doc(db,'users',currentUser.uid)).catch(()=>null);
+      const isPro = userDoc?.data()?.isPro || false;
+      const max = isPro ? 100 : 10;
+      document.getElementById('stat-slots').textContent = `${listings.length} / ${max}`;
+      if(!listings.length) {
+        container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-list"></i><h3>No listings yet</h3><p>Post your first property to start receiving tenant inquiries.</p><button class="btn btn-primary" onclick="showPage(\'post\')"><i class="fa-solid fa-plus"></i> Post a Listing</button></div>';
+        return;
+      }
+      container.innerHTML = listings.map(l=>`
+        <div class="listing-row">
+          <div class="listing-row-icon">${getTypeEmoji(l.type)}</div>
+          <div class="listing-row-info">
+            <div class="listing-row-title">${escHtml(l.title||'Untitled')}</div>
+            <div class="listing-row-meta">${escHtml(l.location||'')} · PKR ${Number(l.price||0).toLocaleString()}/mo · ${l.type||'home'} ${l.isFeatured?'· ⭐ Featured':''}</div>
+          </div>
+          <div class="listing-row-actions">
+            <button class="btn-edit" onclick="openEditModal('${l.id}','${escHtml(l.title||'')}','${escHtml((l.description||'').replace(/'/g,"\\\'"))}','${l.price||0}','${l.type||'home'}','${escHtml(l.location||'')}','${l.whatsapp||''}')">Edit</button>
+            <button class="btn-delete" onclick="deleteListing('${l.id}')">Delete</button>
+          </div>
+        </div>`).join('');
+    } catch(e) { container.innerHTML = '<p style="color:var(--text-muted);">Failed to load listings.</p>'; }
+  };
+
+  window.openEditModal = (id,title,desc,price,type,location,whatsapp) => {
+    document.getElementById('edit-id').value = id;
+    document.getElementById('edit-title').value = title;
+    document.getElementById('edit-desc').value = desc;
+    document.getElementById('edit-price').value = price;
+    document.getElementById('edit-type').value = type;
+    document.getElementById('edit-location').value = location;
+    document.getElementById('edit-whatsapp').value = whatsapp;
+    openModal('editModal');
+  };
+
+  window.saveEditListing = async (e) => {
+    e.preventDefault();
+    if(!currentUser) return;
+    const id = document.getElementById('edit-id').value;
+    const btn = document.getElementById('editSaveBtn');
+    btn.textContent = 'Saving...'; btn.disabled = true;
+    try {
+      await updateDoc(doc(db,'listings',id), {
+        title: document.getElementById('edit-title').value.trim(),
+        description: document.getElementById('edit-desc').value.trim(),
+        price: Number(document.getElementById('edit-price').value),
+        type: document.getElementById('edit-type').value,
+        location: document.getElementById('edit-location').value.trim(),
+        whatsapp: document.getElementById('edit-whatsapp').value.trim()
+      });
+      closeModal('editModal');
+      showToast('Listing updated!', 'success');
+      allListingsCache = [];
+      loadMyListings();
+    } catch(err) { showToast('Failed to update. You can only edit your own listings.', 'error'); }
+    btn.innerHTML = '<i class="fa-solid fa-save"></i> Save Changes'; btn.disabled = false;
+  };
+
+  window.deleteListing = async (id) => {
+    if(!confirm('Delete this listing? This cannot be undone.')) return;
+    try {
+      await deleteDoc(doc(db,'listings',id));
+      showToast('Listing deleted.', 'info');
+      allListingsCache = [];
+      loadMyListings();
+    } catch(err) { showToast('Failed to delete. You can only delete your own listings.', 'error'); }
+  };
+
+  // ===== PAYMENT =====
+  window.submitPayment = async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('paySubmitBtn');
+    btn.textContent = 'Submitting...'; btn.disabled = true;
+    try {
+      const payData = {
+        userId: currentUser ? currentUser.uid : 'guest',
+        name: document.getElementById('pay-name').value.trim(),
+        email: document.getElementById('pay-email').value.trim(),
+        txId: document.getElementById('pay-txid').value.trim(),
+        method: document.getElementById('pay-method').value,
+        amount: Number(document.getElementById('pay-amount').value),
+        plan: 'pro',
+        status: 'pending',
+        createdAt: serverTimestamp()
+      };
+      await addDoc(collection(db,'payments'), payData);
+      document.getElementById('paymentForm').reset();
+      showToast('Payment request submitted! We\'ll activate your Pro account within 24 hours.', 'success');
+    } catch(err) { showToast('Failed to submit. Please try WhatsApp instead: +92 344 1695860', 'error'); }
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Payment Request'; btn.disabled = false;
+  };
+
+  // ===== SETTINGS =====
+  window.saveSettings = async () => {
+    if(!currentUser) return;
+    const name = document.getElementById('settings-name').value.trim();
+    try {
+      await updateProfile(currentUser, { displayName: name });
+      await updateDoc(doc(db,'users',currentUser.uid), { name });
+      showToast('Profile updated!', 'success');
+      document.getElementById('dashName').textContent = name;
+    } catch(e) { showToast('Failed to update profile.', 'error'); }
+  };
+
+  // ===== CONTACT FORM =====
+  window.submitContactForm = async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('cfSubmitBtn');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    // Redirect to WhatsApp with message
+    const name = document.getElementById('cf-name').value;
+    const subj = document.getElementById('cf-subject').value;
+    const msg = document.getElementById('cf-message').value;
+    const waMsg = `Hi, I'm ${name}.\n*Subject:* ${subj}\n\n${msg}`;
+    window.open(`https://wa.me/923441695860?text=${encodeURIComponent(waMsg)}`, '_blank');
+    document.getElementById('contactForm').reset();
+    showToast('Opening WhatsApp with your message...', 'success');
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message'; btn.disabled = false;
+  };
+
+  // ===== AI ASSISTANT =====
+  const aiKB = {
+    'find': 'To find a rental, go to the Listings page, use search and filters to narrow by location, type, or price. Click any listing to see details and contact the owner directly via WhatsApp. It\'s completely free for renters! 🏠',
+    'post': 'To post a listing: 1) Create a free account, 2) Click "Post Listing" in the nav, 3) Fill in your property details including WhatsApp number, 4) Submit — it goes live instantly! Free accounts get 10 listings. 📝',
+    'pro': 'The Pro plan is PKR 999/month. You get up to 100 listings, featured placement on the homepage and search results, a Pro badge, and priority support. Pay via EasyPaisa (0344-1695860) or JazzCash (0327-2358384). ⭐',
+    'contact': 'You can reach us on WhatsApp: +92 344 1695860 or email muhammadalikn53@gmail.com. We\'re available Mon–Sat, 9am–9pm PKT. 📞',
+    'payment': 'We accept EasyPaisa (0344-1695860) and JazzCash (0327-2358384) for Pro upgrades. After sending payment, submit the form on our Payment page and we\'ll verify within 24 hours. 💳',
+    'free': 'Yes! Browsing listings and contacting owners is 100% free. Property owners get 10 free listings on the Starter plan. Upgrade to Pro for PKR 999/month for more listings and features. ✅',
+    'cities': 'We cover all major Pakistani cities including Karachi, Lahore, Islamabad, Faisalabad, Rawalpindi, Multan, Peshawar, Quetta, Hyderabad, and Sialkot — plus many more! 🗺️',
+    'safe': 'Smart Rent Universe uses Firebase Authentication and Firestore security rules. Only you can edit or delete your own listings. We recommend verifying all properties in person before making any payments to owners. 🔒',
+    'delete': 'To delete a listing: Go to Dashboard → My Listings → click the Delete button next to your listing. Only you can delete your own listings.',
+    'edit': 'To edit a listing: Go to Dashboard → My Listings → click the Edit button next to the listing you want to update.',
+  };
+
+  window.sendAIMsg = async (text) => {
+    const input = document.getElementById('aiInput');
+    const userText = text || input.value.trim();
+    if(!userText) return;
+    input.value = '';
+    appendAIMsg(userText, 'user');
+    document.getElementById('aiSuggestions').style.display = 'none';
+    // Find answer
+    const lower = userText.toLowerCase();
+    let reply = 'That\'s a great question! For detailed help, you can always WhatsApp us at +92 344 1695860 or browse our FAQ section on the home page. 😊';
+    for(const [key, ans] of Object.entries(aiKB)) {
+      if(lower.includes(key)) { reply = ans; break; }
+    }
+    // Simulate typing delay
+    const typing = appendAIMsg('...', 'bot');
+    await new Promise(r=>setTimeout(r,800));
+    typing.textContent = reply;
+  };
+
+  function appendAIMsg(text, role) {
+    const msgs = document.getElementById('aiMessages');
+    const div = document.createElement('div');
+    div.className = `ai-msg ${role}`;
+    const bubble = document.createElement('div');
+    bubble.className = 'ai-msg-bubble';
+    bubble.textContent = text;
+    div.appendChild(bubble);
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return bubble;
+  }
+
+  window.toggleVoice = () => {
+    const btn = document.getElementById('voiceBtn');
+    if(!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      showToast('Voice input not supported in this browser. Try Chrome.', 'error'); return;
+    }
+    if(btn.classList.contains('listening')) {
+      if(window._recognition) window._recognition.stop();
+      btn.classList.remove('listening'); return;
+    }
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const rec = new SpeechRecognition();
+    rec.lang = 'ur-PK'; rec.interimResults = false;
+    rec.onresult = (e) => { document.getElementById('aiInput').value = e.results[0][0].transcript; };
+    rec.onerror = () => btn.classList.remove('listening');
+    rec.onend = () => btn.classList.remove('listening');
+    rec.start(); btn.classList.add('listening'); window._recognition = rec;
+  };
+
+  // ===== PAGE INIT HOOKS =====
+  window._pageInits = {
+    home: () => { loadFeaturedListings(); fetchListings(); },
+    listings: () => { loadAllListings(); },
+    dashboard: () => { if(!currentUser) { openModal('loginModal'); showPage('home'); } else { loadMyListings(); } },
+    post: () => { if(!currentUser) { openModal('loginModal'); showPage('home'); } },
+  };
+</script>
+
+<script>
+  // ===== NAVIGATION =====
+  let currentPage = 'home';
+
+  window.showPage = (page) => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + page);
+    if(target) {
+      target.classList.add('active');
+      currentPage = page;
+      window.scrollTo(0,0);
+    }
+    // Update nav active state
+    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+    const navEl = document.getElementById('nav-'+page);
+    if(navEl) navEl.classList.add('active');
+    // Run page-specific init
+    if(window._pageInits && window._pageInits[page]) window._pageInits[page]();
+    // Close mobile menu
+    document.getElementById('mobileMenu').classList.remove('open');
+  };
+
+  window.requireAuth = (page) => {
+    const auth = window._currentUserRef;
+    // Check if user is logged in via DOM state
+    if(document.getElementById('btnDashboard').classList.contains('hidden')) {
+      openModal('loginModal');
+      window._authRedirect = page;
+    } else {
+      showPage(page);
+    }
+  };
+
+  window.filterAndGoListings = (type) => {
+    showPage('listings');
+    setTimeout(()=>{ document.getElementById('typeFilter').value = type; window.applyFilters(); }, 100);
+  };
+
+  // ===== MODALS =====
+  window.openModal = (id) => {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeModal = (id) => {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', (e) => { if(e.target === m) closeModal(m.id); });
+  });
+
+  // ===== DARK MODE =====
+  const saved = localStorage.getItem('theme') || 'light';
+  document.body.setAttribute('data-theme', saved);
+  updateDarkIcon(saved);
+
+  window.toggleDark = () => {
+    const cur = document.body.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateDarkIcon(next);
+  };
+  function updateDarkIcon(theme) {
+    const icon = document.getElementById('darkIcon');
+    if(icon) { icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
+  }
+
+  // ===== MOBILE MENU =====
+  window.toggleMenu = () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  };
+
+  // ===== FAQ =====
+  window.toggleFaq = (el) => {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  };
+
+  // ===== DASHBOARD PANELS =====
+  window.showDashPanel = (panel) => {
+    document.querySelectorAll('.dash-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-nav a').forEach(a=>a.classList.remove('active'));
+    const p = document.getElementById('panel-'+panel);
+    if(p) p.classList.add('active');
+    const n = document.getElementById('dash-nav-'+panel);
+    if(n) n.classList.add('active');
+    if(panel==='mylistings' && window.loadMyListings) window.loadMyListings();
+  };
+
+  // ===== PAYMENT METHOD SELECTOR =====
+  window.selectPayMethod = (method) => {
+    document.getElementById('pmEasypaisa').classList.toggle('selected', method==='easypaisa');
+    document.getElementById('pmJazzcash').classList.toggle('selected', method==='jazzcash');
+    document.getElementById('pay-method').value = method;
+  };
+
+  // ===== TOAST =====
+  window.showToast = (msg, type='info') => {
+    const old = document.querySelector('.toast');
+    if(old) old.remove();
+    const t = document.createElement('div');
+    t.className = `toast toast-${type}`;
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(100%)'; t.style.transition='all 0.3s ease'; setTimeout(()=>t.remove(),300); }, 4000);
+  };
+
+  // ===== AI CHAT TOGGLE =====
+  window.toggleAI = () => { document.getElementById('aiChat').classList.toggle('hidden'); };
+
+  // ===== ESCAPE KEY =====
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id));
+  });
+
+  // ===== HTML ESCAPE =====
+  window.escHtml = (s) => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  // ===== AUTH ERROR MESSAGES =====
+  window.friendlyAuthError = (code) => ({
+    'auth/user-not-found': 'No account with this email. Please sign up.',
+    'auth/wrong-password': 'Incorrect password. Please try again.',
+    'auth/email-already-in-use': 'This email is already registered. Please log in.',
+    'auth/invalid-email': 'Please enter a valid email address.',
+    'auth/weak-password': 'Password should be at least 6 characters.',
+    'auth/too-many-requests': 'Too many attempts. Please try again later.',
+    'auth/network-request-failed': 'Network error. Please check your connection.',
+    'auth/invalid-credential': 'Invalid credentials. Please check your email and password.',
+  }[code] || 'Something went wrong. Please try again.');
+
+  // ===== INIT =====
+  showPage('home');
+</script>
 </body>
 </html>
